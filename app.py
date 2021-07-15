@@ -44,5 +44,23 @@ def idArtist():
     json_artist = idArtist.json()
     return json_artist 
 
+@app.route('/artistRelated')
+@cross_origin() # allow all origins all methods.
+def artisrRelated():
+
+    id = request.args.get('id')
+    artistRelated = requests.get(URL_API + "/artist/" + id + "/related?limit=5")
+    json_artist_related = artistRelated.json()
+    return json_artist_related
+
+@app.route('/artistTopTrack')
+@cross_origin() # allow all origins all methods.
+def artistTopTrack():
+
+    id = request.args.get('id')
+    artistTopTrack = requests.get(URL_API + "/artist/" + id + "/top")
+    json_artist_top_track = artistTopTrack.json()
+    return json_artist_top_track
+
 if __name__=='__main__':
     app.run()
