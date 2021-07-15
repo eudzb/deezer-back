@@ -35,5 +35,14 @@ def idAlbum():
     json_album = idAlbums.json()
     return json_album 
 
+@app.route('/artist')
+@cross_origin() # allow all origins all methods.
+def idArtist():
+
+    id = request.args.get('id')
+    idArtist = requests.get(URL_API + "/artist/" + id)
+    json_artist = idArtist.json()
+    return json_artist 
+
 if __name__=='__main__':
     app.run()
