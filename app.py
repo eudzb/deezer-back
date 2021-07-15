@@ -62,5 +62,32 @@ def artistTopTrack():
     json_artist_top_track = artistTopTrack.json()
     return json_artist_top_track
 
+@app.route('/genreArtist')
+@cross_origin() # allow all origins all methods.
+def genreArtist():
+
+    id = request.args.get('id')
+    genreArtist = requests.get(URL_API + "/genre/" + id + "/artists")
+    json_genre_artist = genreArtist.json()
+    return json_genre_artist
+
+@app.route('/genrePodcast')
+@cross_origin() # allow all origins all methods.
+def genrePodcast():
+
+    id = request.args.get('id')
+    genrePodcast = requests.get(URL_API + "/genre/" + id + "/podcasts")
+    json_genre_podcast = genrePodcast.json()
+    return json_genre_podcast
+
+@app.route('/genreRadios')
+@cross_origin() # allow all origins all methods.
+def genreRadios():
+
+    id = request.args.get('id')
+    genreRadios = requests.get(URL_API + "/genre/" + id + "/radios")
+    json_genre_radios = genreRadios.json()
+    return json_genre_radios
+
 if __name__=='__main__':
     app.run()
