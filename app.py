@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, logging, url_for, redirect, flash
 import requests, json, datetime, random, os
+import logging
 from werkzeug.utils import secure_filename
 from time import *
 from flask_cors import CORS, cross_origin
@@ -24,6 +25,15 @@ def topAlbum():
     albums = requests.get(URL_API + "/chart/0/albums?limit=10")
     json_albums = albums.json()
     return json_albums
+
+@app.route('/album')
+@cross_origin() # allow all origins all methods.
+def idAlbum():
+
+    id = request.args.get('id')
+    idAlbums = requests.get(URL_API + "/album/" + id)
+    json_album = idAlbums.json()
+    return json_album 
 
 if __name__=='__main__':
     app.run()
