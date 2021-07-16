@@ -75,7 +75,7 @@ def artistTopTrack():
 def genreArtist():
 
     id = request.args.get('id')
-    genreArtist = requests.get(URL_API + "/genre/" + id + "/artists")
+    genreArtist = requests.get(URL_API + "/genre/" + id + "/artists?limit=15")
     json_genre_artist = genreArtist.json()
     return json_genre_artist
 
@@ -84,7 +84,7 @@ def genreArtist():
 def genrePodcast():
 
     id = request.args.get('id')
-    genrePodcast = requests.get(URL_API + "/genre/" + id + "/podcasts")
+    genrePodcast = requests.get(URL_API + "/genre/" + id + "/podcasts?limit=15")
     json_genre_podcast = genrePodcast.json()
     return json_genre_podcast
 
@@ -93,7 +93,7 @@ def genrePodcast():
 def genreRadios():
 
     id = request.args.get('id')
-    genreRadios = requests.get(URL_API + "/genre/" + id + "/radios")
+    genreRadios = requests.get(URL_API + "/genre/" + id + "/radios?limit=15")
     json_genre_radios = genreRadios.json()
     return json_genre_radios
 
