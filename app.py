@@ -35,6 +35,14 @@ def idAlbum():
     json_album = idAlbums.json()
     return json_album 
 
+@app.route('/topArtist')
+@cross_origin() # allow all origins all methods.
+def topArtist():
+
+    topArtists = requests.get(URL_API + "/chart/0/artists")
+    json_artists = topArtists.json()
+    return json_artists
+
 @app.route('/artist')
 @cross_origin() # allow all origins all methods.
 def idArtist():
