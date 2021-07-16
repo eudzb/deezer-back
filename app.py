@@ -18,6 +18,16 @@ def home():
     json_genres = genres.json()
     return json_genres
 
+#Album
+@app.route('/album')
+@cross_origin() # allow all origins all methods.
+def idAlbum():
+
+    id = request.args.get('id')
+    idAlbums = requests.get(URL_API + "/album/" + id)
+    json_album = idAlbums.json()
+    return json_album
+ 
 @app.route('/topAlbum')
 @cross_origin() # allow all origins all methods.
 def topAlbum():
@@ -26,23 +36,7 @@ def topAlbum():
     json_albums = albums.json()
     return json_albums
 
-@app.route('/album')
-@cross_origin() # allow all origins all methods.
-def idAlbum():
-
-    id = request.args.get('id')
-    idAlbums = requests.get(URL_API + "/album/" + id)
-    json_album = idAlbums.json()
-    return json_album 
-
-@app.route('/topArtist')
-@cross_origin() # allow all origins all methods.
-def topArtist():
-
-    topArtists = requests.get(URL_API + "/chart/0/artists")
-    json_artists = topArtists.json()
-    return json_artists
-
+#Artist
 @app.route('/artist')
 @cross_origin() # allow all origins all methods.
 def idArtist():
@@ -50,7 +44,15 @@ def idArtist():
     id = request.args.get('id')
     idArtist = requests.get(URL_API + "/artist/" + id)
     json_artist = idArtist.json()
-    return json_artist 
+    return json_artist
+ 
+@app.route('/topArtist')
+@cross_origin() # allow all origins all methods.
+def topArtist():
+
+    topArtists = requests.get(URL_API + "/chart/0/artists")
+    json_artists = topArtists.json()
+    return json_artists
 
 @app.route('/artistRelated')
 @cross_origin() # allow all origins all methods.
@@ -69,6 +71,16 @@ def artistTopTrack():
     artistTopTrack = requests.get(URL_API + "/artist/" + id + "/top")
     json_artist_top_track = artistTopTrack.json()
     return json_artist_top_track
+
+#Genre
+@app.route('/genre')
+@cross_origin() # allow all origins all methods.
+def idGenre():
+
+    id = request.args.get('id')
+    idGenre = requests.get(URL_API + "/genre/" + id)
+    json_genre = idGenre.json()
+    return json_genre
 
 @app.route('/genreArtist')
 @cross_origin() # allow all origins all methods.
