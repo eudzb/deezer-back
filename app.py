@@ -72,6 +72,15 @@ def artistTopTrack():
     json_artist_top_track = artistTopTrack.json()
     return json_artist_top_track
 
+@app.route('/artistAlbum')
+@cross_origin() # allow all origins all methods.
+def artistAlbum():
+
+    id = request.args.get('id')
+    artistAlbum = requests.get(URL_API + "/artist/" + id + "/albums")
+    json_artist_album = artistAlbum.json()
+    return json_artist_album
+
 #Genre
 @app.route('/genre')
 @cross_origin() # allow all origins all methods.
