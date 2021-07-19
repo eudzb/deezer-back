@@ -118,5 +118,55 @@ def genreRadios():
     json_genre_radios = genreRadios.json()
     return json_genre_radios
 
+#Search Albums
+@app.route('/searchAlbums')
+@cross_origin() # allow all origins all methods.
+def searchAlbums():
+
+    search = request.args.get('search')
+    albums = requests.get(URL_API + "/search/album?q=" + search)
+    json_albums = albums.json()
+    return json_albums
+
+#Search Artists
+@app.route('/searchArtists')
+@cross_origin() # allow all origins all methods.
+def searchArtists():
+
+    search = request.args.get('search')
+    artists = requests.get(URL_API + "/search/artist?q=" + search)
+    json_artists = artists.json()
+    return json_artists
+
+#Search Podcasts
+@app.route('/searchPodcasts')
+@cross_origin() # allow all origins all methods.
+def searchPodcasts():
+
+    search = request.args.get('search')
+    podcasts = requests.get(URL_API + "/search/podcast?q=" + search)
+    json_podcasts = podcasts.json()
+    return json_podcasts
+
+#Search Radios
+@app.route('/searchRadios')
+@cross_origin() # allow all origins all methods.
+def searchRadios():
+
+    search = request.args.get('search')
+    radios = requests.get(URL_API + "/search/radio?q=" + search)
+    json_radios = radios.json()
+    return json_radios
+
+#Search Tracks
+@app.route('/searchTracks')
+@cross_origin() # allow all origins all methods.
+def searchTracks():
+
+    search = request.args.get('search')
+    tracks = requests.get(URL_API + "/search/track?q=" + search)
+    json_tracks = tracks.json()
+    return json_tracks
+
 if __name__=='__main__':
     app.run()
