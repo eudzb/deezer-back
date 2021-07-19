@@ -164,7 +164,7 @@ def searchRadios():
 def searchTracks():
 
     search = request.args.get('search')
-    tracks = requests.get(URL_API + "/search/track?q=" + search)
+    tracks = requests.get(URL_API + "/search/track?q=" + search + "&limit=5")
     json_tracks = tracks.json()
     return json_tracks
 
